@@ -3,7 +3,14 @@ import java.util.Scanner;
 /**
  * http://serjudging.vanb.org/wp-content/uploads/SER-2014-D1-Problems.pdf
  * Explanation of Alchemy 
- * 
+ * The constraints on this problem are very strict, no interlocking or intersecting circles is 
+ * a key piece of information. This means that given 3 nested circles, there is always a way to activate
+ * the optimal number of activations for that circle. It is entirely possible to completely skip a circle.
+ * Because of this, we can evaluate each circle starting from the inside and given the number of
+ * parents it has, calculate the optimal score for that circle. Sorting by radius is n log n, 
+ * enumerating parents is n^2 for a performance of O(n^2). Finally, we will use counting sort to
+ * enumerate the traversal. All we need to know is how many rings must be unlocked before ring n,
+ * from there we can make choices based on lower id so as to preserve lexicographical order.
  *
  */
 
